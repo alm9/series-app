@@ -1,20 +1,14 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
-import Input from '../components/form/Input';
+import { StyleSheet, Text, View, Button } from 'react-native';
 
-const HomeScreen = () => {
-  const [stateNome, setStateNome] = React.useState('');
+const HomeScreen = (props) => {
+  const { navigation } = props;
   return (
     <View style={styles.viewStyle}>
-      <Input
-        label="Nome"
-        onChange={(text) => setStateNome(text)}
-        initialValue={''}
-      />
-      <Input
-        label="Busca"
-        onChange={(text) => setStateNome(text)}
-        initialValue={''}
+      <Text>Tela</Text>
+      <Button
+        title={'Faça a navegação'}
+        onPress={() => navigation.navigate('Tela')}
       />
     </View>
   );
