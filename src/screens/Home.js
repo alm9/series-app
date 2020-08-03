@@ -1,10 +1,21 @@
 import React from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View } from 'react-native';
+import Input from '../components/form/Input';
 
 const HomeScreen = () => {
+  const [stateNome, setStateNome] = React.useState('');
   return (
     <View style={styles.viewStyle}>
-      <Text>Heae World!</Text>
+      <Input
+        label="Nome"
+        onChange={(text) => setStateNome(text)}
+        initialValue={''}
+      />
+      <Input
+        label="Busca"
+        onChange={(text) => setStateNome(text)}
+        initialValue={''}
+      />
     </View>
   );
 };
@@ -14,7 +25,8 @@ export default HomeScreen;
 const styles = StyleSheet.create({
   viewStyle: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    margin: 15,
+    alignItems: 'stretch',
+    justifyContent: 'flex-start',
   },
 });
