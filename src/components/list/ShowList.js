@@ -1,28 +1,16 @@
 import React from 'react';
 import { Text, FlatList, StyleSheet, View } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import show from '../../api/show';
+import { useShows } from '../../hooks/useShows';
 
 export default function ShowList() {
-  const [listState, setListState] = React.useState(null);
-
-  React.useEffect(() => {
-    console.info('useEff');
-    show.get('/shows').then((response) => {
-      console.info('response.data', response.data);
-      setListState(response.data);
-    });
-  }, []);
-
-  console.log('listState:', listState);
-  //const shows = {items: [{ id: 11, name: 'Machado' }],};
+  const { shows } = useShows();
 
   return (
     <>
       <View style={styles.listStyle}>
         <FlatList
-          // data={shows.items}
-          data={listState}
+          data={shows}
           keyExtractor={(item) => item.id}
           renderItem={({ item }) => (
             <TouchableOpacity onPress={() => console.log('Clicou em', item.id)}>
