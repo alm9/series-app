@@ -1,14 +1,29 @@
 import React from 'react';
-import { Text } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 
 const NewShowScreen = () => {
   return (
     <>
-      <Text></Text>
-      <Text></Text>
-      <Text>Aqui é a tela de novo show</Text>
+      <View style={styles.newShowView}>
+        <Text style={styles.newShowText}>New Show</Text>
+      </View>
     </>
   );
 };
+
+const styles = StyleSheet.create({
+  newShowView: {
+    flex: 1,
+    backgroundColor: 'black',
+    color: 'white',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  newShowText: {
+    // flex: 1,
+    backgroundColor: 'red',
+    color: 'white',
+  },
+});
 
 export default NewShowScreen;
