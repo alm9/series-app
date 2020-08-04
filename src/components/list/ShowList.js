@@ -2,10 +2,11 @@ import React from 'react';
 import { Text, FlatList, StyleSheet, View } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { useShows } from '../../hooks/useShows';
+import { AppContext } from '../../context/AppContext';
 
 export default function ShowList() {
   const { shows } = useShows();
-
+  const { dispatch } = React.useContext(AppContext);
   return (
     <>
       <View style={styles.listStyle}>
@@ -13,7 +14,11 @@ export default function ShowList() {
           data={shows}
           keyExtractor={(item) => item.id}
           renderItem={({ item }) => (
-            <TouchableOpacity onPress={() => console.log('Clicou em', item.id)}>
+            <TouchableOpacity
+              onPress={() =>
+                dispatch({ type: 'setItemSelected', payload: item.id })
+              }
+            >
               <View style={styles.buttonStyle}>
                 <Text>{item.name}</Text>
               </View>
