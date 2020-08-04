@@ -1,50 +1,33 @@
 import React from 'react';
 import { Text, FlatList, StyleSheet, View } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-
-const shows = {
-  items: [
-    {
-      id: 1,
-      nome: 'Zezin tem cada uma',
-    },
-    {
-      id: 2,
-      nome: 'Ohhh Vanda',
-    },
-    {
-      id: 3,
-      nome: 'Flip escritor',
-    },
-    {
-      id: 4,
-      nome: 'i',
-    },
-    {
-      id: 5,
-      nome: 'Rex',
-    },
-    {
-      id: 6,
-      nome: 'Rock',
-    },
-    {
-      id: 7,
-      nome: 'Tom',
-    },
-  ],
-};
+import show from '../../api/show';
 
 export default function ShowList() {
+  const [listState, setListState] = React.useState(null);
+
+  React.useEffect(() => {
+    console.info('useEff');
+    show.get('/shows').then((response) => {
+      console.info('response.data', response.data);
+      setListState(response.data);
+    });
+  }, []);
+
+  console.log('listState:', listState);
+  //const shows = {items: [{ id: 11, name: 'Machado' }],};
+
   return (
     <>
       <View style={styles.listStyle}>
         <FlatList
-          data={shows.items}
+          // data={shows.items}
+          data={listState}
+          keyExtractor={(item) => item.id}
           renderItem={({ item }) => (
             <TouchableOpacity onPress={() => console.log('Clicou em', item.id)}>
               <View style={styles.buttonStyle}>
-                <Text>{item.nome}</Text>
+                <Text>{item.name}</Text>
               </View>
             </TouchableOpacity>
           )}
