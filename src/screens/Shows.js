@@ -1,14 +1,16 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
+import ShowList from '../components/list/ShowList';
+import ShowDetail from '../components/detail/ShowDetail';
 
 const ShowsScreen = () => {
   return (
     <View style={styles.parentStyle}>
       <View style={styles.listStyle}>
-        <Text>Lista</Text>
+        <ShowList />
       </View>
       <View style={styles.detailStyle}>
-        <Text>Detalhes</Text>
+        <ShowDetail />
       </View>
     </View>
   );
@@ -21,8 +23,6 @@ const styles = StyleSheet.create({
   },
   listStyle: {
     flex: 2,
-    justifyContent: 'center',
-    alignItems: 'center',
     backgroundColor: 'darkgreen',
   },
   detailStyle: {
