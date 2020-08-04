@@ -16,17 +16,31 @@ const tabBarStyles = StyleSheet.create({
   },
 });
 
-const TabBar = ({ navigation }) => {
+const TabBar = ({ navigation, state }) => {
+  // console.info(state);
+
   return (
     <View style={tabBarStyles.viewStyle}>
       <TouchableOpacity onPress={() => navigation.navigate('Home')}>
-        <Octicons name="home" size={30} color="black" />
+        <Octicons
+          name="home"
+          size={30}
+          color={state.index === 0 ? 'blue' : 'black'}
+        />
       </TouchableOpacity>
       <TouchableOpacity onPress={() => navigation.navigate('Shows')}>
-        <Octicons name="list-unordered" size={30} color="black" />
+        <Octicons
+          name="list-unordered"
+          size={30}
+          color={state.index === 1 ? 'blue' : 'black'}
+        />
       </TouchableOpacity>
       <TouchableOpacity onPress={() => navigation.navigate('NewShow')}>
-        <Octicons name="diff-added" size={30} color="black" />
+        <Octicons
+          name="diff-added"
+          size={30}
+          color={state.index === 2 ? 'blue' : 'black'}
+        />
       </TouchableOpacity>
     </View>
   );
