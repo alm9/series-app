@@ -4,24 +4,22 @@ import { AppContext } from '../../context/AppContext';
 
 const ShowDetail = () => {
   const { state } = React.useContext(AppContext);
-
-  // console.info('state.showList.length:', state.showList.length);
-  // if (state.showList.length === 0) return <></>;
-
-  const details = state.showList.find((item) => item.id === state.itemSelected);
+  const { name, country, genre, image_thumbnail_path } = state.itemSelected
+    ? state.showList.find((item) => item.id === state.itemSelected)
+    : { name: '', country: '', genre: '', image_thumbnail_path: '' };
 
   return (
     <>
-      {details !== undefined && (
+      {state.itemSelected !== undefined && (
         <View style={styles.parent}>
           <View style={styles.viewStyle}>
-            <Text>Nome: {details.name}</Text>
-            <Text>País: {details.country}</Text>
-            <Text>Gênero: {details.genre}</Text>
+            <Text>Nome: {name}</Text>
+            <Text>País: {country}</Text>
+            <Text>Gênero: {genre}</Text>
             <Image
               resizeMode="contain"
               style={styles.pictureStyle}
-              source={{ uri: details.image_thumbnail_path }}
+              source={{ uri: image_thumbnail_path }}
             />
           </View>
         </View>
