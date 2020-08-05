@@ -22,11 +22,11 @@ const styles = StyleSheet.create({
     marginTop: 25,
   },
   listStyle: {
-    flex: 2,
+    flex: 4,
     backgroundColor: 'darkgreen',
   },
   detailStyle: {
-    flex: 1,
+    flex: 3,
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: 'green',

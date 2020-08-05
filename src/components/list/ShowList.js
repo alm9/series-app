@@ -11,7 +11,7 @@ export default function ShowList() {
     <>
       <View style={styles.listStyle}>
         <FlatList
-          data={shows}
+          data={shows.sort((a, b) => a.name.localeCompare(b.name))}
           keyExtractor={(item) => item.id}
           renderItem={({ item }) => (
             <TouchableOpacity
